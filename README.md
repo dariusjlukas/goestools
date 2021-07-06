@@ -30,15 +30,18 @@ Bundled dependencies:
 
 ## Build
 
+Note: "$" denotes a command executed as a default user and "#" denotes a command executed as root
+
 ``` shell
-apt-get install -y build-essential cmake git-core libopencv-dev zlib1g-dev librtlsdr-dev
-cd $HOME
-mkdir goestools_root
-cd goestools_root
-git clone --recursive https://github.com/dariusjlukas/goestools
-cd goestools
-./install.sh
+# apt-get install -y build-essential cmake git-core libopencv-dev zlib1g-dev librtlsdr-dev
+$ cd $HOME
+$ mkdir goestools_root
+$ cd goestools_root
+$ git clone --recursive https://github.com/dariusjlukas/goestools
+$ cd goestools
+# ./install.sh
 ```
+goestools is now installed in /usr/local
 
 ## Usage
 

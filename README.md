@@ -31,21 +31,28 @@ Bundled dependencies:
 ## Build
 
 ``` shell
-git clone https://github.com/pietern/goestools
+apt-get install -y build-essential cmake git-core libopencv-dev zlib1g-dev librtlsdr-dev
+cd $HOME
+mkdir goestools_root
+cd goestools_root
+git clone --recursive https://github.com/dariusjlukas/goestools
 cd goestools
-mkdir -p build
-cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=/usr/local
-ls ./src/goesdec ./src/goesproc
+./install.sh
 ```
 
 ## Usage
 
 ### goesrecv
 
-As of February 2018 goesrecv only runs ARM processors with NEON
-extensions (such as the Raspberry Pi 3). Stay tuned for compilation
-instructions...
+``` shell
+goesrecv -v -i 1 -c ~/goestools_root/goestools/etc/goesrecv.conf
+```
+
+### goesproc
+
+``` shell
+goesproc -c ~/goestools_root/goestools/etc/goesproc.conf -m packet --subscribe tcp://127.0.0.1:5004
+```
 
 ### goeslrit
 

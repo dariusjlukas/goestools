@@ -38,7 +38,10 @@ $ cd $HOME
 $ mkdir goestools_root
 $ cd goestools_root
 $ git clone --recursive https://github.com/dariusjlukas/goestools
+$ git clone https://github.com/hdoverobinson/wx-star_false-color
+$ mkdir data
 $ cd goestools
+$ mkdir build
 # ./install.sh
 ```
 goestools is now installed in /usr/local

@@ -28,11 +28,13 @@ RTLSDR::RTLSDR(rtlsdr_dev_t* dev) : dev_(dev) {
 
   // First get the number of gain settings
   rv = rtlsdr_get_tuner_gains(dev_, nullptr);
+  std::cout << "Number of gains: " << rv << std::endl;
   ASSERT(rv > 0);
 
   // Now fill our vector with valid gain settings
   tunerGains_.resize(rv);
   rv = rtlsdr_get_tuner_gains(dev_, tunerGains_.data());
+  std::cout << "Number of gains: " << rv << std::endl;
   ASSERT(rv >= 0);
 
   // Configure manual gain mode
@@ -95,6 +97,7 @@ void RTLSDR::setTunerGain(int db) {
   float resultDist = INT_MAX;
   int resultGain = 0;
   for (const auto& gain : tunerGains_) {
+    std::cout << "gain value: " << gain << std::endl;
     float dist = fabsf((gain / 10.0f) - db);
     if (dist < resultDist) {
       resultDist = dist;
@@ -102,6 +105,7 @@ void RTLSDR::setTunerGain(int db) {
     }
   }
 
+  std::cout << "Selected gain: " << resultGain << std::endl;
   rv = rtlsdr_set_tuner_gain(dev_, resultGain);
   ASSERT(rv >= 0);
 }
